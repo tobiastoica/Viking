@@ -1,5 +1,7 @@
 # ⚡ Viking — Strength, Workout & Nutrition Tracker
 
+[![Build & Release Viking APK](https://github.com/tobiastoica/Viking/actions/workflows/build_apk.yml/badge.svg)](https://github.com/tobiastoica/Viking/actions/workflows/build_apk.yml)
+
 > **Viking** is a sleek, modular, 100% offline mobile workout and nutrition tracking application built with Flutter. Engineered with an athletic dark aesthetic, responsive navigation, drag-and-drop routine design, monthly calendar planning, and an immersive live workout execution HUD.
 
 ---
@@ -122,7 +124,16 @@ lib/
 
 ## 📦 Building the APK
 
-To generate a standalone release APK for Android devices:
+### Automated GitHub Cloud Builds (CI/CD)
+The repository includes a GitHub Actions workflow [`.github/workflows/build_apk.yml`](.github/workflows/build_apk.yml).
+On every push or pull request to `main`:
+1. GitHub spins up a runner, verifies dependencies, runs `flutter analyze` and `flutter test`.
+2. It compiles `app-release.apk` automatically in the cloud.
+3. You can download the compiled APK anytime from the **Actions** tab on GitHub under **Artifacts** (`viking-app-release`).
+4. Pushing a version tag (e.g. `git tag v1.0.0 && git push origin v1.0.0`) automatically publishes a GitHub Release with the APK attached.
+
+### Local Build
+To generate a standalone release APK locally on your machine:
 
 ```bash
 flutter build apk --release
